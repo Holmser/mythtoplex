@@ -30,8 +30,8 @@ module MythToPlex
     def transcode(filename)
       progressbar = ProgressBar.create(:format => '%e %B %p%% %t',)
       puts @video.bitrate
-      options = {}
-      #options = { custom: "-vb #{@video.bitrate/2}k" }
+      #options = {}
+      options = { custom: "-vb #{@video.bitrate/2}k" }
       # encode with options and show progress bar
       @video.transcode(@filename, options) do |progress|
         progressbar.increment if progressbar.progress < (progress * 100).to_i
